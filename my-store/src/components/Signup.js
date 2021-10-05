@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-// import axios from 'axios'
-// import { reach } from 'yup'
-// import schema from '../validation/formSchema'
-// import styled from 'styled-components'
+import axios from 'axios'
+import { reach } from 'yup'
+import schema from '../validation/formSchema'
+import styled from 'styled-components'
 
 const initialFormValues = {
     username: '',
@@ -24,7 +24,7 @@ const [formErrors, setFormErrors] = useState(initialFormErrors)
 
 const postNewAccount = async (newAccount) =>{
     try {
-         const response = await axios.post('https://ft-potluck-planner-7-server.herokuapp.com/api/auth/register', newAccount)
+         const response = await axios.post(' ', newAccount)
             console.log(response)
     }catch(err){
         console.log(err)
