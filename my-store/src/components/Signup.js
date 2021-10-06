@@ -66,7 +66,7 @@ const inputChange = (name, value) =>{
               formSubmit()
           }}>
         <div>
-            <h1>Welcome, please signup below!</h1>
+            <h1>Aloha! please signup below</h1>
             <div className='errors'>
                 <div>{formErrors.username}</div>
                 <div>{formErrors.password}</div>
@@ -100,7 +100,7 @@ const inputChange = (name, value) =>{
             
         </div>
         
-            <button id='button'>submit</button>
+            <button id='button'>Submit</button>
 
            
         </div>
@@ -117,6 +117,7 @@ const FormStyle = styled.form`
     max-width:40rem;
     margin: 2rem auto;
     padding: 2rem;
+    background-color: #0b132b;
 
     & .username, .password {
         margin: 1rem 0;
@@ -124,10 +125,16 @@ const FormStyle = styled.form`
         align-items:stretch;
         flex-direction:column;
     }
-    & label, h1 {
+    & label  {
         font-weight:bold;
         flex:1;
-        color: #464646;
+        color: #5bc0be;
+        margin-bottom:1.0rem
+    }
+    & h1 {
+        font-weight:bold;
+        flex:1;
+        color: white;
         margin-bottom:1.0rem
     }
     & input {
@@ -139,15 +146,28 @@ const FormStyle = styled.form`
     }
     & input:focus {
         outline: none;
-        border-color: #4f005f;
-        background: #f6dbfc;
+        border-color: #5bc0be;
+        background: #3a506b;
+        color: white;
       }
     .errors{
         margin: 8px;
         font-size: 0.7em;
         color: red;
-
  }
+    button{
+        color: #0b132b;
+        text-decoration: none;
+        font-weight: bold;
+        background: #8ac2cf;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        border-color:#8ac2cf;
+  }
+  & button:hover {
+    
+    background: #41acc4;
+  }
 `
 
 
