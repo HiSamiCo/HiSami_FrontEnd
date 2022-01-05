@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { reach } from 'yup'
-import schema from '../validation/formSchema'
+
+
 import styled from 'styled-components'
 
 const initialFormValues = {
@@ -10,17 +10,12 @@ const initialFormValues = {
     
 }
 
-const initialFormErrors = {
-    username: '',
-    password: '',
-}
-
 function Signup() {
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 
 const [formValues, setFormValues] = useState(initialFormValues)
-const [formErrors, setFormErrors] = useState(initialFormErrors)
+
 
 const postNewAccount = async (newAccount) =>{
     try {
@@ -31,13 +26,7 @@ const postNewAccount = async (newAccount) =>{
     }    
 }
 
-const validate = (name, value) => {
-    
-    reach(schema, name)
-        .validate(value)
-        .then(()=> setFormErrors({...formErrors, [name]: '' }))
-        .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
-}
+
 
 
 const formSubmit = () =>{
@@ -52,7 +41,7 @@ const formSubmit = () =>{
 }
 
 const inputChange = (name, value) =>{
-    validate(name, value)
+    
     setFormValues({
         ...formValues, [name]: value
     })
@@ -68,8 +57,6 @@ const inputChange = (name, value) =>{
         <div>
             <h1>Aloha! please signup below</h1>
             <div className='errors'>
-                <div>{formErrors.username}</div>
-                <div>{formErrors.password}</div>
             </div>
          
         <div className='username'>
