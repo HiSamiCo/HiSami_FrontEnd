@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-
+import useForm from '../hooks/useForm'
 
 import styled from 'styled-components'
 
@@ -11,87 +11,58 @@ const initialFormValues = {
 }
 
 function Signup() {
-const [username, setUsername] = useState('')
-const [password, setPassword] = useState('')
 
-const [formValues, setFormValues] = useState(initialFormValues)
+    const [formValues, inputChange] = useForm(initialFormValues)
 
-
-const postNewAccount = async (newAccount) =>{
-    try {
-         const response = await axios.post(' ', newAccount)
+    const postNewAccount = async (newAccount) =>{
+        try {
+            const response = await axios.post(' ', newAccount)
             console.log(response)
-    }catch(err){
-        console.log(err)
-    }    
-}
+        }catch(err){
+            console.log(err)
+        }    
+    }
 
-
-
-
-const formSubmit = () =>{
-    const newAccount = {
-        username: formValues.username.trim(),
-        password: formValues.password.trim(),
-        
-        
-    }   
-    console.log(newAccount)
-    postNewAccount(newAccount)
-}
-
-const inputChange = (name, value) =>{
+    const formSubmit = e =>{
+        e.preventDefault()
+        const newAccount = {
+            username: formValues.username.trim(),
+            password: formValues.password.trim(),
+        }   
+        console.log(newAccount)
+        postNewAccount(newAccount)
+    }
     
-    setFormValues({
-        ...formValues, [name]: value
-    })
-}
-
-
     return (
 
-         <FormStyle onSubmit={(evt)=>{
-              evt.preventDefault()
-              formSubmit()
-          }}>
-        <div>
-            <h1>Aloha! please signup below</h1>
-            <div className='errors'>
+        <FormStyle onSubmit={formSubmit}>
+            <div>
+                <h1>Aloha! please signup below</h1>
+                <div className='errors'>
+                </div>
+                <div className='username'>
+                    <label>Username:</label>
+                    <input 
+                        type='text' 
+                        placeholder='Please enter a username'
+                        name='username' 
+                        value={formValues.username} 
+                        onChange={inputChange}
+                    />
+                </div>   
+                <div className='password'>  
+                    <label>Password:</label>
+                    <input 
+                        type='password'
+                        placeholder='********'
+                        name='password' 
+                        value={formValues.password} 
+                        onChange={inputChange}
+                    />
+                </div>
+                <button id='button'>Submit</button> 
             </div>
-         
-        <div className='username'>
-            <label>Username:</label>
-                 <input 
-                type='text' 
-                placeholder='Please enter a username'
-                name='username' 
-                value={username} 
-                onChange={(evt)=>{
-                    setUsername(evt.target.value)
-                    inputChange(evt.target.name, evt.target.value)  
-             }}></input>
-            
-        </div>   
-        
-        <div className='password'>  
-            <label>Password:</label>
-                 <input 
-                type='password'
-                placeholder='********'
-                name='password' 
-                value={password} 
-                onChange={(evt)=> {
-                    setPassword(evt.target.value)
-                    inputChange(evt.target.name, evt.target.value)  
-             }}></input>
-            
-        </div>
-        
-            <button id='button'>Submit</button>
-
-           
-        </div>
-      </FormStyle>   
+        </FormStyle>   
     )
 }
 
