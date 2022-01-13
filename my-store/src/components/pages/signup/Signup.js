@@ -1,13 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import useForm from '../hooks/useForm'
-import '../css/Signup.css'
+import useForm from '../../../hooks/useForm'
+import '../../../css/Signup.css'
 
 
 const initialFormValues = {
     username: '',
     password: '',
-    
 }
 
 function Signup() {
