@@ -1,0 +1,58 @@
+
+.homepage{
+     width: 100%;
+     
+}
+.banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.aboutUs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#5bc0be ;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+h2{
+    justify-content: center;
+}
+nav{
+    padding-top:2%;
+    display: flex;
+    justify-content: center;
+    
+}
+a{
+    color: red;
+    text-decoration: none;
+    font-size: 1.5rem;
+    
+}
+
+.exampleProducts1, .exampleProducts2{
+    display: flex;
+    
+    padding-top: 3%;
+    
+     
+}
+
+.example1, .example2, .example3, .example4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    
+}
+
+img{
+    width:50%;
+    border-radius: 10px;
+}
