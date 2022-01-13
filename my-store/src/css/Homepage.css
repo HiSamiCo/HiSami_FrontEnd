@@ -23,7 +23,7 @@
 h2{
     justify-content: center;
 }
-nav{
+.homepage nav{
     padding-top:2%;
     display: flex;
     justify-content: center;

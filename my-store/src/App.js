@@ -3,6 +3,7 @@ import Signup from './components/Signup'
 import { Switch, Route } from 'react-router-dom'
 import Homepage from './components/Homepage';
 import StripeContainer from './components/StripeContainer';
+import "./css/reset.css"
 
 function App() {
   return (
