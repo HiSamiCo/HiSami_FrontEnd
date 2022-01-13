@@ -4,7 +4,6 @@ import React from "react"
 import PaymentForm from "./PaymentForm"
 
 const { REACT_APP_PUBLIC_KEY } = process.env
-console.log(REACT_APP_PUBLIC_KEY)
 
 const stripeTestPromise = loadStripe(REACT_APP_PUBLIC_KEY)
 

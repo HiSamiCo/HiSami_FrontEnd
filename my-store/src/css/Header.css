@@ -16,6 +16,10 @@ header a {
   margin: 1rem;
 }
 
+.active {
+  color: black
+}
+
 .link {
   display: flex;
   height: 5rem;
