@@ -1,5 +1,6 @@
 import Header from './components/common/Header'
 import Signup from './components/pages/signup/Signup'
+import Login from './components/pages/login/Login'
 import { Switch, Route } from 'react-router-dom'
 import Homepage from './components/pages/home/Homepage';
 import StripeContainer from './components/pages/pay/StripeContainer';
@@ -12,6 +13,9 @@ function App() {
       <Switch>
         <Route path='/signup'> 
           <Signup/>
+        </Route>
+        <Route path='/login'> 
+          <Login/>
         </Route>
         <Route path='/pay'>
           <StripeContainer/>
