@@ -1,5 +1,4 @@
 import React from 'react'
-import useForm from '../../../hooks/useForm'
 import useBackend from '../../../hooks/useBackend'
 import Form from '../../common/Form'
 
@@ -26,6 +25,6 @@ export default function Login() {
     }
     
     return (
-        <Form initialState={initialFormValues} submit={submit}/>
+        <Form title="Login:" initialState={initialFormValues} submit={submit}/>
     )
 }

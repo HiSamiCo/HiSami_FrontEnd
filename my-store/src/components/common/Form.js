@@ -15,29 +15,33 @@ export default function Form(props) {
 
     return (
         <form onSubmit={onSubmit}>
-            {Object.keys(formState).map((value) => (
-                <Input
+            <fieldset>
+
+                <legend>{title}</legend>
+                {Object.keys(formState).map((value) => (
+                    <Input
                     key={`${value}input`}
                     name={value}
                     value={formState[value]}
                     handleChange={handleChange}
-                />
-            ))}
-            {/* {Object.keys(errors).map((value) => (
-                <Error
+                    />
+                    ))}
+                {/* {Object.keys(errors).map((value) => (
+                    <Error
                     key={`${value}error`}
                     errorType={value}
                     error={errors[value]}
-                />
-            ))} */}
-            <div>
-                <button type="reset" onClick={reset}>
-                    Reset
-                </button>
-                <button type="submit">
-                    Submit
-                </button>
-            </div>
+                    />
+                ))} */}
+                <div>
+                    <button type="reset" onClick={reset}>
+                        Reset
+                    </button>
+                    <button type="submit">
+                        Submit
+                    </button>
+                </div>
+            </fieldset>
         </form>
     );
 }
