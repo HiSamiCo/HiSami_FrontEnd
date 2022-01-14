@@ -5,7 +5,7 @@ import '../../../css/Signup.css'
 
 
 const initialFormValues = {
-    username: '',
+    email: '',
     password: '',
 }
 
@@ -25,7 +25,7 @@ function Signup() {
     const formSubmit = e =>{
         e.preventDefault()
         const newAccount = {
-            username: formValues.username.trim(),
+            email: formValues.email.trim(),
             password: formValues.password.trim(),
         }   
         console.log(newAccount)
@@ -39,13 +39,13 @@ function Signup() {
                 <h1>Aloha! please signup below</h1>
                 <div className='errors'>
                 </div>
-                <div className='username'>
+                <div className='email'>
                     <label>Username:</label>
                     <input 
-                        type='text' 
-                        placeholder='Please enter a username'
-                        name='username' 
-                        value={formValues.username} 
+                        type='email' 
+                        placeholder='Please enter an email'
+                        name='email' 
+                        value={formValues.email} 
                         onChange={inputChange}
                     />
                 </div>   
