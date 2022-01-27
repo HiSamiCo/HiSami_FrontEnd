@@ -1,6 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 import React, { useState } from "react";
+import useBackend from "../../../hooks/useBackend";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -47,6 +47,7 @@ export default function PaymentForm() {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
+  const api = useBackend()
 
   const handleCartAmount = (DummyData) => {
     let finalAmount = 0;
@@ -67,8 +68,8 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await axios.post(
-          "http://localhost:5000/api/stripe/payment",
+        const response = await api.post(
+          "/api/stripe/payment",
           {
             amount: handleCartAmount(cartDummyData) * 100,
             id,
