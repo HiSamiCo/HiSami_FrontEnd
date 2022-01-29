@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
 import useBackend from "../../../hooks/useBackend";
+import "../../../css/Stripe.css";
 
 const CARD_OPTIONS = {
   iconStyle: "solid",
@@ -47,7 +48,7 @@ export default function PaymentForm() {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  const api = useBackend()
+  const api = useBackend();
 
   const handleCartAmount = (DummyData) => {
     let finalAmount = 0;
@@ -68,13 +69,10 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await api.post(
-          "/api/stripe/payment",
-          {
-            amount: handleCartAmount(cartDummyData) * 100,
-            id,
-          }
-        );
+        const response = await api.post("/api/stripe/payment", {
+          amount: handleCartAmount(cartDummyData) * 100,
+          id,
+        });
 
         if (response.data.success) {
           console.log("Successful payment");
@@ -92,7 +90,29 @@ export default function PaymentForm() {
     <>
       {!success && (
         <form onSubmit={handleSubmit}>
+          <h3>Shipping Information</h3>
+          <div className="stripeForm">
+            <label for="city">City</label>
+            <input id="city" placeholder="city" />
+            <br />
+            <label for="country">Country</label>
+            <input id="country" placeholder="country" />
+            <br />
+            <label for="address">Address</label>
+            <input id="address" placeholder="line1" />
+            <br />
+            <label for="apt_suite_etc">Apartment, suite, etc.</label>
+            <input id="apt_suite_etc" placeholder="line2" />
+            <br />
+            <label for="zip">Zipcode</label>
+            <input id="zip" placeholder="postal code" />
+            <br />
+            <label for="state">State</label>
+            <input id="state" placeholder="state" />
+          </div>
+          <h3>Payment Information</h3>
           <CardElement options={CARD_OPTIONS} />
+          <br />
           <button>Pay</button>
         </form>
       )}

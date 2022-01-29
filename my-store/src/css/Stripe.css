@@ -1,0 +1,4 @@
+.stripeForm {
+  display: flex;
+  flex-direction: column;
+}
