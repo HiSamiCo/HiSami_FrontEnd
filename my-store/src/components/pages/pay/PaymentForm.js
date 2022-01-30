@@ -44,8 +44,24 @@ const cartDummyData = [
   },
 ];
 
+const addressFormValues = {
+    city: '',
+    country: '',
+    line1: '',
+    line2: '',
+    postal_code: '',
+    state: '',
+}
+
+const nameState = {
+  name:''
+}
+
+
 export default function PaymentForm() {
   const [success, setSuccess] = useState(false);
+  const [name, setName] = useState(nameState)
+  const [formValues, setFormValues] = useState(addressFormValues);
   const stripe = useStripe();
   const elements = useElements();
   const api = useBackend();
@@ -57,6 +73,20 @@ export default function PaymentForm() {
     });
     return finalAmount;
   };
+
+  const inputChange = (name, value)=>{
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  }
+  
+  const nameChange = (name, value)=>{
+    setName({
+      ...name,
+      [name]: value
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,6 +102,7 @@ export default function PaymentForm() {
         const response = await api.post("/api/stripe/payment", {
           amount: handleCartAmount(cartDummyData) * 100,
           id,
+          shipping:{address:formValues, name:name}
         });
 
         if (response.data.success) {
@@ -86,29 +117,35 @@ export default function PaymentForm() {
     }
   };
 
+
+
+
   return (
     <>
       {!success && (
         <form onSubmit={handleSubmit}>
           <h3>Shipping Information</h3>
           <div className="stripeForm">
+          <label for="name">Name</label>
+            <input id="name" placeholder="Name" onChange={evt=>{nameChange(evt.target.value)}} />
+            <br />
             <label for="city">City</label>
-            <input id="city" placeholder="city" />
+            <input id="city" placeholder="City" onChange={evt=>{inputChange('city', evt.target.value)}} />
             <br />
             <label for="country">Country</label>
-            <input id="country" placeholder="country" />
+            <input id="country" placeholder="Country" onChange={evt=>{inputChange('country', evt.target.value)}} />
             <br />
             <label for="address">Address</label>
-            <input id="address" placeholder="line1" />
+            <input id="address" placeholder="Address Line 1" onChange={evt=>{inputChange('line1', evt.target.value)}} />
             <br />
             <label for="apt_suite_etc">Apartment, suite, etc.</label>
-            <input id="apt_suite_etc" placeholder="line2" />
+            <input id="apt_suite_etc" placeholder="Address Line 2" onChange={evt=>{inputChange('line2', evt.target.value)}} />
             <br />
             <label for="zip">Zipcode</label>
-            <input id="zip" placeholder="postal code" />
+            <input id="zip" placeholder="Zipcode"  onChange={evt=>{inputChange('postal_code', evt.target.value)}}/>
             <br />
             <label for="state">State</label>
-            <input id="state" placeholder="state" />
+            <input id="state" placeholder="State" onChange={evt=>{inputChange('state', evt.target.value)}}/>
           </div>
           <h3>Payment Information</h3>
           <CardElement options={CARD_OPTIONS} />
