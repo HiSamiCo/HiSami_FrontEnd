@@ -2,7 +2,6 @@ import React from "react";
 import useBackend from "../../../hooks/useBackend";
 import Form from "../../common/Form";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 const initialFormValues = {
   email: "",

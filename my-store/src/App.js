@@ -6,8 +6,19 @@ import Homepage from "./components/pages/home/Homepage";
 import StripeContainer from "./components/pages/pay/StripeContainer";
 import "./css/reset.css";
 import AdminDashboard from "./components/admin/AdminDashboard";
+import { useEffect } from "react"
+import { connect } from "react-redux"
+import {getStore} from "./state/actions"
 
-function App() {
+
+function App(props
+) {
+  const {getStore} = props;
+
+  useEffect(() => {
+getStore()
+  }, [])
+
   return (
     <div className="App">
       <Header />
@@ -32,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null, { getStore })(App);

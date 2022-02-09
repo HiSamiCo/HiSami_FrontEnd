@@ -1,14 +1,14 @@
 import axios from "axios";
-const { REACT_APP_BACKEND_URI } = process.env;
+// const { REACT_APP_BACKEND_URI } = process.env;
 console.log(process.env);
-const useBackend = () => {
+const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
   return axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://hisamibackend.herokuapp.com/",
     headers: {
       authorization: token,
     },
   });
 };
 
-export default useBackend;
+export default axiosWithAuth;
