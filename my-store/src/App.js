@@ -15,9 +15,7 @@ function App(props
 ) {
   const {getStore} = props;
 
-  useEffect(() => {
-getStore()
-  }, [])
+  useEffect(getStore, []) // eslint-disable-line
 
   return (
     <div className="App">
@@ -32,11 +30,11 @@ getStore()
         <Route path="/pay">
           <StripeContainer />
         </Route>
+        <Route path="/admindash/:category_id">
+          <AdminDashboard />
+        </Route>
         <Route path="/">
           <Homepage />
-        </Route>
-        <Route path="/admindash">
-          <AdminDashboard />
         </Route>
       </Switch>
     </div>
