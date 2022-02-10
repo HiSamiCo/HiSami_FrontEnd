@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { connect } from "react-redux"
 import Category from './Category';
 import { useParams } from "react-router-dom"
+import ManageProducts from './ManageProducts';
 
 function AdminDashboard(props) {
     // 3. add products
@@ -28,11 +29,8 @@ function AdminDashboard(props) {
                     />
                 )
             }
-            {
-                products?.map(product => 
-                    <></>    
-                )
-            }
+            
+            {category_id && <ManageProducts products={products}/>}
         </div>
  
    );
