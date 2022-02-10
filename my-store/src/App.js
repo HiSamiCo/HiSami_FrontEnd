@@ -33,6 +33,9 @@ function App(props
         <Route path="/admindash/:category_id">
           <AdminDashboard />
         </Route>
+        <Route path="/admindash">
+          <AdminDashboard />
+        </Route>
         <Route path="/">
           <Homepage />
         </Route>

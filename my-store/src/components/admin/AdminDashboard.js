@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { connect } from "react-redux"
 import Category from './Category';
 import { useParams } from "react-router-dom"
@@ -10,9 +10,14 @@ function AdminDashboard(props) {
     // 6. 3-5 as with categories
     const { category_id } = useParams()
     const { storeData } = props
-    const { products } = storeData.find(c => 
-        c.category_id === parseInt(category_id)
-    )
+
+    const products = useMemo(() => {
+        const category = storeData.find(c => 
+            c.category_id === parseInt(category_id)
+        )
+        return category?.products || []
+    }, [category_id]) // eslint-disable-line
+
     return (
         <div>
             {
@@ -24,7 +29,7 @@ function AdminDashboard(props) {
                 )
             }
             {
-                products.map(product => 
+                products?.map(product => 
                     <></>    
                 )
             }
