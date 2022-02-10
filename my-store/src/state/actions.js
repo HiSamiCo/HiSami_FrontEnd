@@ -28,3 +28,15 @@ export const getStore = () => async dispatch => {
         dispatch(handleError(err))
     }
 }
+
+export const CREATE_PRODUCT = "CREATE_PRODUCT"
+
+export const createProduct = product => async dispatch => {
+    try {
+        dispatch(startRequest())
+        await axiosWithAuth().post("/api/products/create/products", product)
+        dispatch(getStore())
+    } catch(err) {
+        dispatch(handleError(err))
+    }
+}
