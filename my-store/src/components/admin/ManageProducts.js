@@ -7,7 +7,7 @@ export default function ManageProducts(props) {
     return (
         <div>
             <CreateProduct/>
-            {products.map(p => 
+            {products.sort((a,b) => a.stock - b.stock).map(p => 
                 <Product product={p} key={p.product_id}/>
             )} 
         </div>
