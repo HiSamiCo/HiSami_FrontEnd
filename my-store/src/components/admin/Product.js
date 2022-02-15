@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from "react-redux"
+import { deleteProduct } from "../../state/actions"
 
-export default function Product(props) {
-  const { product_name: name, image, details, stock, price } = props.product
+function Product(props) {
+  const { deleteProduct } = props
+  const { product_name: name, image, details, stock, price, product_id } = props.product
+  const [deleted, setDeleted] = useState(false)
+  const handleDelete = () => {
+    deleteProduct(product_id)
+    setDeleted(true)
+  }
+  if (deleted) return null
   return (
     <div>
       <div className='img-container'>
@@ -12,8 +21,12 @@ export default function Product(props) {
       <p>Price: {price}</p>
       <p>Stock: {stock}</p>
       
-      <button>Delete</button>
+      <button onClick={handleDelete}>
+        Delete
+      </button>
       <button>Edit</button>
     </div>
   )
 }
+
+export default connect(null, { deleteProduct })(Product)
