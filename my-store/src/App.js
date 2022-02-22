@@ -9,6 +9,7 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import { useEffect } from "react"
 import { connect } from "react-redux"
 import {getStore} from "./state/actions"
+import PrivateRoute from "./components/common/PrivateRoute";
 
 
 function App(props
@@ -30,12 +31,12 @@ function App(props
         <Route path="/pay">
           <StripeContainer />
         </Route>
-        <Route path="/admindash/:category_id">
+        <PrivateRoute path="/admindash/:category_id" admin={true}>
           <AdminDashboard />
-        </Route>
-        <Route path="/admindash">
+        </PrivateRoute>
+        <PrivateRoute path="/admindash" admin={true}>
           <AdminDashboard />
-        </Route>
+        </PrivateRoute>
         <Route path="/">
           <Homepage />
         </Route>
