@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import decode from "jwt-decode"
 import { connect } from 'react-redux';
 
-
-const PrivateRoute = ({ component: Component, admin, isAdmin, ...rest }) => {
+const PrivateRoute = ({ component: Component, admin, ...rest }) => {
     const token = localStorage.getItem('token');
 
-    if (admin && !isAdmin) return <Redirect to='/login' />
+    if (admin && !decode(token).admin) return <Redirect to='/login' />
 
     return <Route {...rest} render={(props) => {
         if (token) {
@@ -17,8 +17,5 @@ const PrivateRoute = ({ component: Component, admin, isAdmin, ...rest }) => {
     }}/>
 }
 
-const mapStateToProps = state => ({
-    isAdmin: state.isAdmin
-})
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default connect()(PrivateRoute);
