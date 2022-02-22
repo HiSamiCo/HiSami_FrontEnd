@@ -13,7 +13,6 @@ const reducer = (state = initialState, actions) => {
         case HANDLE_ERROR: return {...state, error: payload, isLoading: false}
         case SET_STORE: return {...state, storeData: payload, isLoading: false}
         case START_REQUEST: return {...state, isLoading: true}
-        case SET_ADMIN: return {...state, isAdmin: payload}
         default:
             return state
     }

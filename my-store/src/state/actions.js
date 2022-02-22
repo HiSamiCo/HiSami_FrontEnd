@@ -51,6 +51,3 @@ export const createCategory = category => async dispatch => {
         dispatch(handleError(err))
     }
 }
-
-export const SET_ADMIN = "SET_ADMIN"
-export const setAdmin = isAdmin => ({ type: SET_ADMIN, payload: isAdmin })
