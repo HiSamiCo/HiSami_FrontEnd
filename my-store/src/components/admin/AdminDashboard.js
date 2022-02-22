@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { connect } from "react-redux"
-import Category from './Category';
 import { useParams } from "react-router-dom"
 import ManageProducts from './ManageProducts';
+import ManageCategories from './ManageCategories';
 
 function AdminDashboard(props) {
     // 3. add products
@@ -21,15 +21,7 @@ function AdminDashboard(props) {
 
     return (
         <div>
-            {
-                storeData.map(category => 
-                    <Category 
-                        category={category} 
-                        key={category.category_id}
-                    />
-                )
-            }
-            
+            <ManageCategories storeData={storeData}/>
             {category_id && <ManageProducts products={products}/>}
         </div>
  

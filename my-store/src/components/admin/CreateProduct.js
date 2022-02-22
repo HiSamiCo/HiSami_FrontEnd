@@ -32,7 +32,7 @@ function CreateProduct(props) {
     }
     return (
         <div>
-            <button onClick={toggleForm} >+</button>
+            <button onClick={toggleForm} >Add New Product</button>
             {toggle && (
                 <form onSubmit={submit}>
                     <label for="product_nameInput">

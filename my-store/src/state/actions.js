@@ -40,3 +40,14 @@ export const createProduct = product => async dispatch => {
         dispatch(handleError(err))
     }
 }
+export const CREATE_CATEGORY = "CREATE_CATEGORY"
+
+export const createCategory = category => async dispatch => {
+    try {
+        dispatch(startRequest())
+        await axiosWithAuth().post("/api/products/category", category )
+        dispatch(getStore())
+    } catch(err) {
+        dispatch(handleError(err))
+    }
+}
