@@ -11,17 +11,18 @@ export default function Category(props) {
         setToggle(!toggle)
     }
     const url = useMemo(() => {
-        return`/adminDash/${parseInt(categoryId) === category_id ? "" : category_id}`
-    }, [categoryId])
+        const focused = parseInt(categoryId) === category_id
+        return`/adminDash/${focused ? "" : category_id}`
+    }, [categoryId]) // eslint-disable-line
 
     // display a card for each cateogry
     // button for revealing products
     // focus effects greyscale background
     return (
-        <NavLink to={url} onClick={click}>
-            <div>
+        <NavLink className="categoryNames" to={url} onClick={click}>
+            
                 {category_name}
-            </div>
+            
         </NavLink>
     );
 }

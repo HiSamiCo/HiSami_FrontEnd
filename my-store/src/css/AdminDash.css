@@ -1,0 +1,15 @@
+.category-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoryNames {
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+a.categoryNames.active{
+    background-color: grey;
+}

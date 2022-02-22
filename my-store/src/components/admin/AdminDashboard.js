@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { useParams } from "react-router-dom"
 import ManageProducts from './ManageProducts';
 import ManageCategories from './ManageCategories';
+import "../../css/AdminDash.css"
 
 function AdminDashboard(props) {
     // 3. add products

@@ -7,7 +7,8 @@ export default function ManageCategories(props) {
     // create a new category
     // delete a category
     return (
-        <div>  
+        <div>
+            <div className='category-container'>
             {
                 storeData.map(category => 
                     <Category 
@@ -16,6 +17,7 @@ export default function ManageCategories(props) {
                     />
                 )
             }
+            </div>  
             <CreateCategory/>
         </div>
     )
